@@ -14,18 +14,20 @@ ind2name = containers.Map(Indices, Names);
 
 parent={0,1,2,3,4,1,6,7,8,1,10,11,12,13,14,12,16,17,18,12,20,21,22};
 
-raw_data = dlmread('data');
+raw_data = dlmread('dae.dump');
 
-[nJoints, n] = size(raw_data);
-nFrame = n / 16;
-flattened_data = reshape(raw_data, nJoints, 16, nFrame);
+[m, n] = size(raw_data);
+nJoints= numel(parent);
+nFrame = m / nJoints;
+flattened_data = reshape(raw_data, nJoints, nFrame, 16);
 
 clf;
 figure(1);
-plotRootTraj(flattened_data(1,[4,8,12], :));
+%plotRootTraj(flattened_data(1,:,[4,8,12]));
+
+draw_skel(parent, flattened_data);
+
+xlabel('x');
+ylabel('y');
+zlabel('z');
 axis equal;
-%{
-for i=5:5%nFrame
-  draw_skel(parent, flattened_data(:,:,i));
-end
-%}

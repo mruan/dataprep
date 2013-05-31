@@ -161,10 +161,11 @@ public:
     // Print out info
     //    cout << nodeName << endl;
     //    pprintMat4x4(finalTf);
-    pprintMat16(finalTf);
+    // pprintScQtTr(sc.mValue, qt.mValue, tr.mValue);
+    pprintMat16(nodeTf);
 
     for(uint i=0; i< pNode->mNumChildren; ++i)
-    ReadNodeHeirarchy(frameIdx, pNode->mChildren[i], globalTf);
+      ReadNodeHeirarchy(frameIdx, pNode->mChildren[i], globalTf);
   }
 
   /* Some helper functions */
@@ -183,5 +184,12 @@ public:
     printf("%.5f %.5f %.5f %.5f " , mat.b1, mat.b2, mat.b3, mat.b4);
     printf("%.5f %.5f %.5f %.5f " , mat.c1, mat.c2, mat.c3, mat.c4);
     printf("%.5f %.5f %.5f %.5f\n", mat.d1, mat.d2, mat.d3, mat.d4);
+  }
+
+  static void pprintScQtTr(const aiVector3D& sc, const aiQuaternion& qt, const aiVector3D& tr)
+  {
+    printf("sc: %4.2f %4.2f %4.2f qt: %7.4f %7.4f %7.4f %7.4f tr: %7.4f %7.4f %7.4f\n",
+	   sc.x, sc.y, sc.z, qt.w, qt.x, qt.y, qt.z, tr.x, tr.y, tr.z);
+    //	printf("%7.4f %7.4f %7.4f\n", tr.x, tr.y, tr.z);
   }
 };
