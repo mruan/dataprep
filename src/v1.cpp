@@ -41,6 +41,7 @@ int main(int argc, char** argv)
   if (argc< 2)
     {
       help(argv[0]);
+      return 1;
     }
   
   buildBoneIdx();

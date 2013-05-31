@@ -64,7 +64,7 @@ public:
   void LoadBones(const aiMesh* pMesh)
   {
     //    DebugMsg(2, "Loading bones from mesh");
-    cout<< "Loading bones from mesh\n";
+    //    printf("Loading bones from mesh\n");
 
     mBoneOffset.resize(mBoneIdx.size());
     mBoneFinalTf.resize(mBoneIdx.size());
@@ -91,7 +91,7 @@ public:
   {
 
     //    DebugMsg(2, "Counting bones in animations");
-    cout << "Counting bones in animations\n";
+    //    printf("Counting bones in animations\n");
 
     mBoneAnim.resize(mBoneIdx.size());
     for(uint32 i=0; i< pAnim->mNumChannels; ++i)
@@ -124,7 +124,7 @@ public:
     // for all frames:
     for(uint32 j=0; j< pAnim->mChannels[0]->mNumRotationKeys; j++)
       {
-	printf("\n[[Frame %2d]]\n", j);
+	//	printf("\n[[Frame %2d]]\n", j);
 	ReadNodeHeirarchy(j, pNode, I);
       }
   }
